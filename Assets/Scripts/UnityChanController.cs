@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UnityChanController : MonoBehaviour
 {
@@ -19,7 +20,10 @@ public class UnityChanController : MonoBehaviour
     private float movableRange = 3.4f;
     //動きを減速させる係数
     private float coefficient = 0.99f;
+    //ゲーム終了の判定
     private bool isEnd = false;
+    //ゲーム終了時に表示するテキスト
+    private GameObject stateText;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +33,9 @@ public class UnityChanController : MonoBehaviour
         this.myAnimator.SetFloat("Speed", 1);
         //Rigidbodyコンポーネント取得
         this.myRigidbody = GetComponent<Rigidbody>();
+
+        //シーン中のstateTextオブジェクトを取得
+        this.stateText = GameObject.Find("GameResultText");
     }
 
     // Update is called once per frame
@@ -88,11 +95,15 @@ public class UnityChanController : MonoBehaviour
         if(other.gameObject.tag == "CarTag" || other.gameObject.tag == "TrafficConeTag")
         {
             this.isEnd = true;
+            //stateTextにGAME OVERを表示
+            this.stateText.GetComponent<Text>().text = "GAME OVER";
         }
         //ゴール地点に到達した場合
         if(other.gameObject.tag == "GoalTag")
         {
             this.isEnd = true;
+            //stateTextにGAME CLEARを表示
+            this.stateText.GetComponent<Text>().text = "CLEAR!!";
         }
 
         //コインに衝突した場合
