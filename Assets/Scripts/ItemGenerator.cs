@@ -136,6 +136,7 @@ public class ItemGenerator : MonoBehaviour
         //アイテム生成を更新判定
         if (!IsUpdateGenerateItem((int)unitychan.transform.position.z)) return;
         this.currentMostTailItemPosZ += generateItemDiffPosZ;
+        this.updateItemPosZ += generateItemDiffPosZ;
         //アイテム生成位置がゴールよりも奥に配置されるか判定
         if (this.goalPos <= this.currentMostTailItemPosZ) return;
         GenerateItem(currentMostTailItemPosZ);
