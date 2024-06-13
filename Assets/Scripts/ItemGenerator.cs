@@ -26,7 +26,8 @@ public class ItemGenerator : MonoBehaviour
     //現在のアイテムの最後尾位置
     private int currentMostTailItemPosZ = 90;
     //指定位置ごとにアイテムを生成するための位置
-    private const int generateItemDiffPosZ = 15;
+    [SerializeField]
+    private int generateItemDiffPosZ = 15;
 
     const float coneDiffX = 0.4f;
     //乱数の最小・最大範囲

@@ -72,11 +72,12 @@ public class UnityChanController : MonoBehaviour
         if((Input.GetKey(KeyCode.LeftArrow) || this.isLButtonDown) && -this.movableRange < this.transform.position.x)
         {
             //左方向への速度を代入
-            inputVelocityX = -this.velocityX;
-        }else if((Input.GetKey(KeyCode.RightArrow) || this.isRButtonDown) && this.transform.position.x < this.movableRange)
+            inputVelocityX += -this.velocityX;
+        }
+        if((Input.GetKey(KeyCode.RightArrow) || this.isRButtonDown) && this.transform.position.x < this.movableRange)
         {
             //右方向への速度を代入
-            inputVelocityX = this.velocityX;
+            inputVelocityX += this.velocityX;
         }
 
         //ジャンプしていない時にスペースが押されたらジャンプする
